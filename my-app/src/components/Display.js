@@ -31,6 +31,7 @@ export default function Display({ symbol, watchList, setWatchList }) {
       ...prevList,
       {
         symbol: symbolU,
+        id: Math.random(),
         prevClose: prevClose,
         change: change,
         changeP: changeP,
