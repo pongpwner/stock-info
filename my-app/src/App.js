@@ -2,12 +2,27 @@ import Header from "./components/Header.js";
 import Input from "./components/Input.js";
 import Display from "./components/Display";
 import WatchList from "./components/WatchList";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./App.css";
 
 function App() {
-  const [watchList, setWatchList] = useState([]);
+  var localData;
+  var JSONData;
+
+  localData = localStorage.getItem("watchList");
+  if (localData === undefined) {
+    console.log("yahoo");
+    JSONData = [];
+  } else {
+    JSONData = JSON.parse(localData);
+  }
+
+  const [watchList, setWatchList] = useState(JSONData);
+
+  useEffect(() => {
+    localStorage.setItem("watchList", JSON.stringify(watchList));
+  }, [watchList]);
   return (
     <div className="App">
       <Header />
