@@ -22,16 +22,15 @@ export default function StockWatch({
   function toggleModal() {
     setModalState(!modalState);
     setModalSymbol(symbol);
-    console.log("a");
   }
 
   return (
     <div className="stockWatchContainer" onClick={toggleModal}>
       <button onClick={deleteStock}>delete</button>
-      <div className="">Symbol:{symbol} </div>
-      <div className="">Prev Close: {prevClose}</div>
-      <div className="">Change:{change}</div>
-      <div className="">Percent Change:{changeP}</div>
+      <div className="stockWatchInfo">Symbol:{symbol} </div>
+      <div className="stockWatchInfo">Prev Close: {prevClose}</div>
+      <div className="stockWatchInfo">Change:{change}</div>
+      <div className="stockWatchInfo">Percent Change:{changeP}</div>
     </div>
   );
 }
