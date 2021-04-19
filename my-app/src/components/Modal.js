@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export default function Modal({ modalSymbol, modalState, setModalState }) {
-  console.log(modalState);
+  //console.log(modalState);
   const api = {
     key: "J688E4HG3S7RD7V1",
     base: "https://www.alphavantage.co/",
@@ -39,7 +39,7 @@ export default function Modal({ modalSymbol, modalState, setModalState }) {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        //console.log(data);
         setPrevClose(data["Global Quote"]["08. previous close"]);
         setChange(data["Global Quote"]["09. change"]);
         setChangeP(data["Global Quote"]["10. change percent"]);

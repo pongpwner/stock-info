@@ -22,7 +22,7 @@ function App() {
   const [watchList, setWatchList] = useState(JSONData);
   const [modalSymbol, setModalSymbol] = useState("");
   const [modalState, setModalState] = useState(false);
-  console.log(modalSymbol);
+  //console.log(modalSymbol);
 
   useEffect(() => {
     localStorage.setItem("watchList", JSON.stringify(watchList));
@@ -36,6 +36,7 @@ function App() {
       />
       <Header />
       <Input watchList={watchList} setWatchList={setWatchList} />
+
       <WatchList
         watchList={watchList}
         setWatchList={setWatchList}

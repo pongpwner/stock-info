@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Display({ symbol, watchList, setWatchList }) {
   const [symbolU, setSymbolU] = useState(""); //formatted symbol all caps
-  const [prevClose, setPrevCLose] = useState("");
+  const [prevClose, setPrevClose] = useState("");
   const [change, setChange] = useState("");
   const [changeP, setChangeP] = useState("");
   const api = {
@@ -12,6 +12,7 @@ export default function Display({ symbol, watchList, setWatchList }) {
     function2: "Global_QUOTE",
   };
   useEffect(() => {
+    console.log(symbol);
     fetch(
       `${api.base}query?function=${api.function2}&symbol=${symbol}&interval=5min&apikey=${api.key}`
     )
@@ -19,7 +20,7 @@ export default function Display({ symbol, watchList, setWatchList }) {
       .then((data) => {
         console.log(data);
         setSymbolU(data["Global Quote"]["01. symbol"].toUpperCase());
-        setPrevCLose(data["Global Quote"]["08. previous close"]);
+        setPrevClose(data["Global Quote"]["08. previous close"]);
         setChange(data["Global Quote"]["09. change"]);
         setChangeP(data["Global Quote"]["10. change percent"]);
       })
