@@ -19,39 +19,58 @@ export default function WatchList({
     function1: "TIME_SERIES_INTRADAY",
     function2: "Global_QUOTE",
   };
-
-  function update() {
+  let temp1 = [];
+  async function update() {
     console.log(watchList);
-    let temp = watchList.map((stock) => {
+
+    await watchList.forEach((stock) => {
+      console.log(stock.symbol);
+      ///////////////////// need to use async
       fetch(
         `${api.base}query?function=${api.function2}&symbol=${stock.symbol}&interval=5min&apikey=${api.key}`
       )
         .then((response) => response.json())
         .then((data) => {
-          //console.log(data);
+          console.log(data);
           setSymbolU(data["Global Quote"]["01. symbol"].toUpperCase());
           setPrevClose(data["Global Quote"]["08. previous close"]);
           setChange(data["Global Quote"]["09. change"]);
           setChangeP(data["Global Quote"]["10. change percent"]);
+
+          //push into temp
+          temp1.push({
+            symbol: stock.symbol,
+            id: stock.id,
+            prevClose: prevClose,
+            change: change,
+            changeP: changeP,
+          });
         })
         .catch((err) => console.log("wrong symbol"));
-      return {
-        symbol: symbolU,
-        id: stock,
-        prevClose: prevClose,
-        change: change,
-        changeP: changeP,
-      };
+      // return {
+      //   symbol: stock.symbol,
+      //   id: stock.id,
+      //   prevClose: prevClose,
+      //   change: change,
+      //   changeP: changeP,
+      // };
     });
-    setWatchList(temp);
-    console.log(watchList);
+    //////////////////
+  }
+  async function update1() {
+    await update().then(() => {
+      console.log(temp1);
+      setWatchList(temp1);
+      console.log(watchList);
+      temp1 = [];
+    });
   }
 
   return (
     //need to make this refresh and re call the api on button press or time interval
     //have an array with the names of symbols and map into stock watch where stock watch runs the api with the symbol
     <div className="watchListContainer">
-      <button onClick={update}>update</button>
+      <button onClick={update1}>update</button>
       {watchList.map((stock) => (
         <StockWatch
           stock={stock} // has to be first for some reason
