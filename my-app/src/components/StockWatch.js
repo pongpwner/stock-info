@@ -49,12 +49,14 @@ export default function StockWatch({
   }
 
   return (
-    <div className="stockWatchContainer" onClick={toggleModal}>
+    <div className="stockWatchContainer">
       <button onClick={deleteStock}>delete</button>
-      <div className="stockWatchInfo">Symbol:{symbol} </div>
-      <div className="stockWatchInfo">Prev Close: {prevClose}</div>
-      <div className="stockWatchInfo">Change:{change}</div>
-      <div className="stockWatchInfo">Percent Change:{changeP}</div>
+      <div onClick={toggleModal}>
+        <div className="stockWatchInfo">Symbol:{symbol} </div>
+        {/* <div className="stockWatchInfo">Prev Close: {prevClose}</div>
+<div className="stockWatchInfo">Change:{change}</div>
+<div className="stockWatchInfo">Percent Change:{changeP}</div>  */}
+      </div>
     </div>
   );
 }

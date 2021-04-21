@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import Chart from "./Charts.js";
 export default function Modal({ modalSymbol, modalState, setModalState }) {
   //console.log(modalState);
   const api = {
@@ -59,6 +59,7 @@ export default function Modal({ modalSymbol, modalState, setModalState }) {
         <div className="modalInfo">change%: {changeP}</div>
         <button onClick={toggleModal}> close</button>
       </div>
+      <Chart symbol={modalSymbol} />
     </div>
   );
 }

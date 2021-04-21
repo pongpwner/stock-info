@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function Display({ symbol, watchList, setWatchList }) {
-  const [symbolU, setSymbolU] = useState(""); //formatted symbol all caps
+  const [symbolU, setSymbolU] = useState(""); //formatted symbol all caps put in the scope of the fetch
   const [prevClose, setPrevClose] = useState("");
   const [change, setChange] = useState("");
   const [changeP, setChangeP] = useState("");
