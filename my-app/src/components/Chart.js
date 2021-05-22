@@ -22,15 +22,17 @@ export default function Chart({ symbol }) {
       .then((response) => response.json())
       .then((data) => {
         for (var day in data["Time Series (Daily)"]) {
-          xValues.push(day);
-          yValues.push(data["Time Series (Daily)"][day]["1. open"]);
+          xvalues.push(day);
+          yvalues.push(data["Time Series (Daily)"][day]["1. open"]);
         }
-        console.log(xValues);
-        setXValues(xValues);
-        setYValues(yValues);
+      })
+      .then(() => {
+        setXValues(xvalues);
+        setYValues(yvalues);
+        console.log(xvalues);
       })
       .catch(console.log("failed to load chart"));
-  }, [xValues, yValues]);
+  }, [symbol]);
 
   console.log(xValues);
 
@@ -40,15 +42,14 @@ export default function Chart({ symbol }) {
       <Plot
         data={[
           {
-            x: [1, 2, 3],
-            y: [2, 6, 3],
+            x: xValues,
+            y: yValues,
             type: "scatter",
             mode: "lines+markers",
             marker: { color: "red" },
           },
-          { type: "bar", x: [1, 2, 3], y: [2, 5, 3] },
         ]}
-        layout={{ width: 320, height: 240, title: "A Fancy Plot" }}
+        layout={{ width: 320, height: 240, title: symbol }}
       />
     </div>
   );
