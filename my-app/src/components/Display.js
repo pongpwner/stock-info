@@ -5,6 +5,7 @@ export default function Display({ symbol, watchList, setWatchList }) {
   const [prevClose, setPrevClose] = useState("");
   const [change, setChange] = useState("");
   const [changeP, setChangeP] = useState("");
+
   const api = {
     key: "J688E4HG3S7RD7V1",
     base: "https://www.alphavantage.co/",
@@ -28,6 +29,11 @@ export default function Display({ symbol, watchList, setWatchList }) {
   }, [symbol, api.base, api.key, api.function2, api.function1]);
 
   function addToWatchList() {
+    for (let i = 0; i < watchList.length; i++) {
+      if (symbolU === watchList[i].symbol) {
+        return;
+      }
+    }
     setWatchList((prevList) => [
       ...prevList,
       {
@@ -43,13 +49,31 @@ export default function Display({ symbol, watchList, setWatchList }) {
 
   return (
     <div className="displayContainer">
-      <button className="addStockButton" onClick={addToWatchList}>
+      <div className="displayItem symbol">Symbol:{symbolU}</div>
+      <div className="displayItem  prevCLose">Prev Close:{prevClose} </div>
+      <div className="displayItem">
+        Change:
+        <span
+          className={`displayItem  change ${
+            change > 0 ? "positive" : "negative"
+          }`}
+        >
+          {change}
+        </span>
+      </div>
+      <div className="displayItem">
+        Percent Change:
+        <span
+          className={`displayItem  change ${
+            change > 0 ? "positive" : "negative"
+          }`}
+        >
+          {changeP}
+        </span>
+      </div>
+      <button className="displayItem addStockButton" onClick={addToWatchList}>
         add to watch list
       </button>
-      <div className="symbol">Symbol:{symbolU}</div>
-      <div className="prevCLose">Prev Close:{prevClose} </div>
-      <div className="change">Change:{change}</div>
-      <div className="percentChange">Percent Change:{changeP}</div>
     </div>
   );
 }

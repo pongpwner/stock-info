@@ -1,5 +1,12 @@
-.watchListContainer {
-  border: 1px black solid;
+body {
+  background-color: black;
+  color: white;
+  box-sizing: border-box;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .modal {
   position: fixed;
@@ -11,12 +18,63 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: black;
 }
 .innerModal {
-  border: 1px black solid;
+  border: 1px gray solid;
   background-color: white;
+  padding-left: 1%;
+  padding-top: 1%;
+}
+.openModal {
+  display: flex;
+  flex-basis: 100%;
+  padding: 1%;
+}
+.modalTitle {
+}
+.modalInfo {
+  padding-bottom: 2%;
+  font-size: 1.3em;
+}
+.closeModal {
+  justify-self: flex-end;
+}
+.positive {
+  color: green;
+}
+.negative {
+  color: red;
+}
+/* ////////////////////////////////Display///////////////////////////////////*/
+.displayContainer {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3em;
+}
+.displayItem {
 }
 
-.hidden {
-  display: none;
+/* ///////////////////////////////////////////////////////////////////////////////////*/
+.watchListContainer {
+  border: 1px #8a8a8a solid;
+  width: 30%;
+  margin-top: 4%;
+}
+.stockWatchContainer {
+  border-bottom: 1px #8a8a8a solid;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.5em;
+  padding: 0;
+}
+.stockWatchInfo {
+  padding-left: 1%;
+}
+
+/* ///////////////////////////////////////////////////////////////////////////////////*/
+
+.headerContainer {
+  background-color: black;
+  color: white;
 }

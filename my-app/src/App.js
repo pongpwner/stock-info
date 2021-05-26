@@ -23,6 +23,7 @@ function App() {
   const [watchList, setWatchList] = useState(JSONData);
   const [modalSymbol, setModalSymbol] = useState("");
   const [modalState, setModalState] = useState(false);
+
   //console.log(modalSymbol);
   useEffect(() => {
     let d = new Date();

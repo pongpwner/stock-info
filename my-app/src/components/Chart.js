@@ -45,11 +45,11 @@ export default function Chart({ symbol }) {
             x: xValues,
             y: yValues,
             type: "scatter",
-            mode: "lines+markers",
+            mode: "lines",
             marker: { color: "red" },
           },
         ]}
-        layout={{ width: 320, height: 240, title: symbol }}
+        layout={{ width: 500, height: 420, title: symbol }}
       />
     </div>
   );

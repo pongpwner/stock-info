@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReactDom from "react-dom";
 import Chart from "./Chart.js";
 export default function Modal({ modalSymbol, modalState, setModalState }) {
   //console.log(modalState);
@@ -16,6 +17,7 @@ export default function Modal({ modalSymbol, modalState, setModalState }) {
   const [prevClose, setPrevClose] = useState("");
   const [change, setChange] = useState("");
   const [changeP, setChangeP] = useState("");
+  const [companyName, setCompanyName] = useState("");
 
   function toggleModal() {
     setModalState(!modalState);
@@ -31,6 +33,7 @@ export default function Modal({ modalSymbol, modalState, setModalState }) {
         setDividend(data.DividendYield);
         setDividendDate(data.DividendDate);
         setForwardPe(data.ForwardPE);
+        setCompanyName(data.Name);
       })
       .catch((err) => console.log("wrong symbol"));
     ///////
@@ -46,22 +49,38 @@ export default function Modal({ modalSymbol, modalState, setModalState }) {
       })
       .catch((err) => console.log("wrong symbol"));
   }, [api.base, api.function2, api.function3, modalSymbol, api.key]);
-  return (
-    <div className={`modal ${modalState === false ? "hidden" : ""}`}>
+  if (modalState === false) return null;
+  return ReactDom.createPortal(
+    <div className="modal">
       <div className="innerModal">
+        <button className="closeModal" onClick={toggleModal}>
+          {" "}
+          close
+        </button>
         <h1 className="modalTitle">{modalSymbol}</h1>
+        <div className="modalInfo">{companyName}</div>
+        <div className="modalInfo">previous close: {prevClose}</div>
+        <div className="modalInfo">
+          change:{" "}
+          <span className={`${change > 0 ? "positive" : "negative"}`}>
+            {change}
+          </span>
+        </div>
+        <div className="modalInfo">
+          change%:{" "}
+          <span className={`${change > 0 ? "positive" : "negative"}`}>
+            {changeP}
+          </span>
+        </div>
         <div className="modalInfo">market cap:{marketcap}</div>
+        <div className="modalInfo">forward PE: {forwardPe}</div>
         <div className="modalInfo">dividend: {dividend}</div>
         <div className="modalInfo">dividend date: {dividendDate}</div>
-        <div className="modalInfo">forward PE: {forwardPe}</div>
-        <div className="modalInfo">previous close: {prevClose}</div>
-        <div className="modalInfo">change: {change}</div>
-        <div className="modalInfo">change%: {changeP}</div>
-        <button onClick={toggleModal}> close</button>
 
         <Chart symbol={modalSymbol} />
       </div>
-    </div>
+    </div>,
+    document.getElementById("portal")
   );
 }
 //

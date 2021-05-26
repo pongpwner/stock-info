@@ -13,6 +13,7 @@ export default function WatchList({
   const [prevClose, setPrevClose] = useState("");
   const [change, setChange] = useState("");
   const [changeP, setChangeP] = useState("");
+
   const api = {
     key: "J688E4HG3S7RD7V1",
     base: "https://www.alphavantage.co/",
@@ -67,7 +68,6 @@ export default function WatchList({
     //need to make this refresh and re call the api on button press or time interval
     //have an array with the names of symbols and map into stock watch where stock watch runs the api with the symbol
     <div className="watchListContainer">
-      <button onClick={update}>update</button>
       {watchList.map((stock) => (
         <StockWatch
           stock={stock} // has to be first for some reason
@@ -81,6 +81,7 @@ export default function WatchList({
           setModalSymbol={setModalSymbol}
           setModalState={setModalState}
           modalState={modalState}
+          companyName={stock.name}
         />
       ))}
     </div>
