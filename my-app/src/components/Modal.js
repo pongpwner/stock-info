@@ -53,11 +53,12 @@ export default function Modal({ modalSymbol, modalState, setModalState }) {
   return ReactDom.createPortal(
     <div className="modal">
       <div className="innerModal">
-        <button className="closeModal" onClick={toggleModal}>
-          {" "}
-          close
-        </button>
-        <h1 className="modalTitle">{modalSymbol}</h1>
+        <div className="modalTop">
+          <h1 className="modalTitle">{modalSymbol}</h1>
+          <button className="closeModal" onClick={toggleModal}>
+            X
+          </button>
+        </div>
         <div className="modalInfo">{companyName}</div>
         <div className="modalInfo">previous close: {prevClose}</div>
         <div className="modalInfo">

@@ -1,7 +1,28 @@
+* {
+  box-sizing: border-box;
+}
 body {
   background-color: black;
   color: white;
   box-sizing: border-box;
+}
+button {
+  background-color: white;
+  border: none;
+}
+.searchButton {
+  background-color: white;
+  border: none;
+  padding: 1%;
+  width: 30%;
+  font-size: 1.1em;
+}
+.searchbar {
+  font-size: 1.1em;
+  width: 70%;
+}
+.addStockButton {
+  font-size: 1.1em;
 }
 .App {
   display: flex;
@@ -24,7 +45,6 @@ body {
   border: 1px gray solid;
   background-color: white;
   padding-left: 1%;
-  padding-top: 1%;
 }
 .openModal {
   display: flex;
@@ -39,6 +59,14 @@ body {
 }
 .closeModal {
   justify-self: flex-end;
+  background-color: white;
+  font-size: 25px;
+  width: 30px;
+  height: 30px;
+}
+.closeModal:hover {
+  background-color: red;
+  color: white;
 }
 .positive {
   color: green;
@@ -46,7 +74,14 @@ body {
 .negative {
   color: red;
 }
+.modalTop {
+  display: flex;
+  justify-content: space-between;
+}
 /* ////////////////////////////////Display///////////////////////////////////*/
+.inputContainer {
+  width: 12%;
+}
 .displayContainer {
   display: flex;
   flex-direction: column;
@@ -55,7 +90,7 @@ body {
 .displayItem {
 }
 
-/* ///////////////////////////////////////////////////////////////////////////////////*/
+/* //////////////////////////////////////////////watchlist and stockwatch/////////////////////////////////////*/
 .watchListContainer {
   border: 1px #8a8a8a solid;
   width: 30%;
@@ -71,7 +106,15 @@ body {
 .stockWatchInfo {
   padding-left: 1%;
 }
-
+.deleteStockButton {
+  background-color: white;
+  border: none;
+  width: 10%;
+}
+.deleteStockButton:hover {
+  background-color: red;
+  color: white;
+}
 /* ///////////////////////////////////////////////////////////////////////////////////*/
 
 .headerContainer {

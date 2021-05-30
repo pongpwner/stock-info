@@ -13,11 +13,13 @@ export default function Input({ watchList, setWatchList }) {
   return (
     <div className="inputContainer">
       <input
+        className="searchbar"
         type="text"
         placeholder="Search a stock"
         onChange={(e) => setSearch(e.target.value)}
       ></input>
       <input
+        className="searchButton"
         type="submit"
         value="search"
         placeholder="search"

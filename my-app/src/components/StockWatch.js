@@ -50,7 +50,9 @@ export default function StockWatch({
 
   return (
     <div className="stockWatchContainer">
-      <button onClick={deleteStock}>delete</button>
+      <button className="deleteStockButton" onClick={deleteStock}>
+        X
+      </button>
       <div className="openModal" onClick={toggleModal}>
         <div className="stockWatchInfo">{symbol} </div>
 
