@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-// make so when clicked a modal with more information about the stock will come up
-// create modal information state in app.js prop drill to here and have a function that toggles modal state and changes the
-//required infomration
 export default function StockWatch({
   stock,
   watchList,
@@ -55,10 +52,7 @@ export default function StockWatch({
       </button>
       <div className="openModal" onClick={toggleModal}>
         <div className="stockWatchInfo">{symbol} </div>
-
-        {/* <div className="stockWatchInfo">Prev Close: {prevClose}</div>
-<div className="stockWatchInfo">Change:{change}</div>
-<div className="stockWatchInfo">Percent Change:{changeP}</div>  */}
+        <div>{prevClose}</div>
       </div>
     </div>
   );

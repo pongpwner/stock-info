@@ -28,7 +28,7 @@ export default function Modal({ modalSymbol, modalState, setModalState }) {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         setMarketcap(data.MarketCapitalization);
         setDividend(data.DividendYield);
         setDividendDate(data.DividendDate);
@@ -36,13 +36,13 @@ export default function Modal({ modalSymbol, modalState, setModalState }) {
         setCompanyName(data.Name);
       })
       .catch((err) => console.log("wrong symbol"));
-    ///////
+    
     fetch(
       `${api.base}query?function=${api.function2}&symbol=${modalSymbol}&interval=5min&apikey=${api.key}`
     )
       .then((response) => response.json())
       .then((data) => {
-        //console.log(data);
+        
         setPrevClose(data["Global Quote"]["08. previous close"]);
         setChange(data["Global Quote"]["09. change"]);
         setChangeP(data["Global Quote"]["10. change percent"]);

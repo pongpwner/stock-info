@@ -7,7 +7,7 @@ export default function Input({ watchList, setWatchList }) {
 
   function searchSymbol() {
     setSymbol(search);
-    console.log(symbol);
+    
   }
 
   return (

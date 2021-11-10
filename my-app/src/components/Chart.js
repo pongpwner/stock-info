@@ -29,12 +29,9 @@ export default function Chart({ symbol }) {
       .then(() => {
         setXValues(xvalues);
         setYValues(yvalues);
-        console.log(xvalues);
       })
       .catch(console.log("failed to load chart"));
   }, [symbol]);
-
-  console.log(xValues);
 
   return (
     <div className="chartContainer">

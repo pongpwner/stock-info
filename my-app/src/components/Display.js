@@ -13,13 +13,11 @@ export default function Display({ symbol, watchList, setWatchList }) {
     function2: "Global_QUOTE",
   };
   useEffect(() => {
-    console.log(symbol);
     fetch(
       `${api.base}query?function=${api.function2}&symbol=${symbol}&interval=5min&apikey=${api.key}`
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setSymbolU(data["Global Quote"]["01. symbol"].toUpperCase());
         setPrevClose(data["Global Quote"]["08. previous close"]);
         setChange(data["Global Quote"]["09. change"]);
@@ -44,7 +42,6 @@ export default function Display({ symbol, watchList, setWatchList }) {
         changeP: changeP,
       },
     ]);
-    console.log(watchList);
   }
 
   return (
